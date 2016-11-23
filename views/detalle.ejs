@@ -1,0 +1,111 @@
+<%- include layouts/header.ejs %>
+
+<body>
+
+<div class="container">
+  <h2>Informe de colaborador</h2>
+
+  <table id="detalle" class="table table-condensed">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>APELLIDO</th>
+        <th>CEDULA</th>
+        <th>CLAVE</th>
+        <th>CARGO</th>
+        <th>SAL_BASE</th>
+        <th>COM 2%</th>
+        <th>BONOS</th>
+        <th>TOT SAL</th>
+        <th>SEG_SOC</th>
+        <th>SEG_ED</th>
+        <th>ISL</th>
+        <th>OTR_DESC</th>
+        <th>TOT_DESC</th>
+        <th>SAL_NETO</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+        <%var salbase=data[0].salario/2 %>
+        <%var saltot=(data[0].salario/2)+(data[0].salario*0.10)+(data[0].ventas*0.02) %>
+        <%var ventas=data[0].ventas*0.02 %>
+        <%var bono=data[0].salario*0.10 %>
+        <%var segsoc=saltot*0.0975 %>
+        <%var segedu=saltot*0.0125 %>
+        <%var salanual=saltot*26 %>
+        <%var descbas=0 %>
+        <% if(data[0].clave=="A"){
+
+               descbas=800.00
+
+
+        } %>
+        <%var basedeimp=(salanual-descbas)-11000 %>
+        <%var isl=(basedeimp*0.15)/24 %>
+        <%var otrosdesc=data[0].otros_descuentos/2 %>
+        <%var totdesc=segsoc+segedu+isl+otrosdesc %>
+        <%var salnet=saltot-totdesc %>
+
+
+
+
+
+      <tr>
+        <td><%=data[0].id%></td>
+        <td><%=data[0].nombre%></td>
+        <td><%=data[0].apellido%></td>
+        <td><%=data[0].cedula%></td>
+        <td><%=data[0].clave%></td>
+         <td><%=data[0].cargo%></td>
+         <td><%=Math.round(salbase*100)/100%></td>
+         <td><%=Math.round(ventas*100)/100%></td>
+         <td><%=Math.round(bono*100)/100%></td>
+         <td><%=Math.round(saltot*100)/100%></td>
+         <td><%=Math.round(segsoc*100)/100%></td>
+         <td><%=Math.round(segedu*100)/100%></td>
+         <td><%=Math.round(isl*100)/100%></td>
+         <td><%=Math.round(otrosdesc*100)/100%></td>
+         <td><%=Math.round(totdesc*100)/100%></td>
+         <td><%=Math.round(salnet*100)/100%></td>
+
+    </tbody>
+  </table>
+
+      <script>
+        $(document).ready(function(e)
+        {
+
+
+                  $('#detalle').DataTable({
+          dom: 'Bfrtip',
+          buttons: [
+              'copy', 'excel', 'pdf', 'print'
+          ]
+      } );
+
+        });
+      </script>
+</div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include layouts/footer.ejs %>

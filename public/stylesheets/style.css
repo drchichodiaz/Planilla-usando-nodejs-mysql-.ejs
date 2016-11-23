@@ -1,0 +1,71 @@
+body {
+  padding-top: 20px;
+  font: 17px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+footer {
+	background:rgb(13, 14, 14);
+	color:rgb(255, 255, 255);
+	text-align: center;
+}
+
+.div1{
+	background: rgb(255, 255, 255);
+	color: rgb(0, 56, 255);
+	border: 1px solid #3299b4;
+	border-radius: 5px;
+}
+
+.div2{
+	background: rgb(255, 255, 255);
+	color: rgb(0, 56, 255);
+	border: 1px solid #3299b4;
+	border-radius: 5px;
+
+}
+.div3{
+	background: rgb(255, 255, 255);
+}
+
+.fondo{
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 1px;
+	margin: -2px
+}
+
+.header1{
+	text-align: center;
+	background: rgb(0, 56, 255);
+	color: rgb(255, 255, 255);
+	font-size: 160%;
+	margin-left: -16px;
+	margin-right: -16px;
+	border: 1px solid rgb(12, 14, 14);
+	border-radius: 5px;
+}
+
+.header2{
+	text-align: center;
+	background: rgb(12, 14, 14);
+	color: rgb(255, 255, 255);
+	font-size: 160%;
+	margin-left: -16px;
+	margin-right: -16px;
+	border: 1px solid #3299b4;
+	border-radius: 5px;
+}
+
+.header3{
+	text-align: center;
+	background: rgb(3, 207, 158);
+	color: rgb(255, 255, 255);
+	font-size: 160%;
+	margin-left: -16px;
+	margin-right: -16px;
+	border: 1px solid #3299b4;
+	border-radius: 5px;
+}

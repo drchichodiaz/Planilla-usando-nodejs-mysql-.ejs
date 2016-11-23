@@ -1,0 +1,62 @@
+<%- include layouts/header.ejs %>
+
+  <div class="container">
+    <br>
+    <div class="col-md-5">
+      <form action="/empleados/add" method="post">
+        <div class="panel panel-primary" id="p">
+          <label for="usuario ">Ingrese Usuario</label>
+          <div class="form-group">
+            <label for="nombre" class="control-label">Nombre:</label>
+            <input type="text" name="nombre" class="form-control" id="nombre">
+          </div>
+          <div class="form-group">
+            <label for="apellido" class="control-label">Apellido:</label>
+            <input type="text" name="apellido" class="form-control" id="apellido">
+          </div>
+          <div class="form-group">
+            <label for="cedula" class="control-label">Cedula:</label>
+            <input type="text" name="cedula" class="form-control" id="cedula">
+          </div>
+
+          <div class="form-group">
+            <label for="clave">Estado Civil:</label>
+            <select class="form-control" id="clave" name="clave">
+              <option value="E">Soltero(a)</option>
+              <option value="A">Casado(a)</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cargo" class="control-label">Cargo:</label>
+            <input type="text" name="cargo" class="form-control" id="cargo">
+          </div>
+          <div class="form-group">
+            <label for="fechaInicioLabores" class="control-label">Años:</label>
+            <input type="text" name="anos" class="form-control" id="anos">
+          </div>
+          <div class="form-group">
+            <label for="salario" class="control-label">Salario:</label>
+            <input type="text" name="salario" class="form-control" id="salario">
+          </div>
+
+
+          <div class="form-group">
+            <label for="ventas" class="control-label">Ventas:</label>
+            <input type="text" name="ventas" class="form-control" id="ventas">
+          </div>
+          <div class="form-group">
+            <label for="descuentos" class="control-label">Descuentos:</label>
+            <input type="text" name="descuentos" class="form-control" id="descuentos">
+          </div>
+
+
+             <input type="submit" id="btn-submit" value="Registrar" class="btn btn-primary btn-block" >
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<%- include layouts/footer.ejs %>

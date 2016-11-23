@@ -1,0 +1,114 @@
+<%- include layouts/header.ejs %>
+
+
+
+
+        </script>
+        <br>
+        <br>
+          <div class="container" id="p">
+            <label for="Filtros" style="float:center" >Filtros</label>
+            <div class="">
+              <form class="form-inline">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="buscar" placeholder="Nombre" name="nombreFlt">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="buscar" placeholder="Apellido" name="apellidoFlt">
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-toolbar. glyphicon glyphicon-search"></i></button>
+                </div>
+              </form>
+              <br>
+            </div>
+
+          </div>
+        <div>
+         <div>
+           <button onclick="addEmpleado();">+ Add</button>
+         </div>
+         <div>
+            <table id="tabla" class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Clave</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Clave</th>
+                    <th>Acciones</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <% if(data.length){
+
+                 for(var i = 0;i < data.length;i++) { %>
+
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td><%=data[i].nombre%></td>
+                    <td><%=data[i].apellido%></td>
+                    <td><%=data[i].cedula%></td>
+                    <td><%=data[i].clave%></td>
+                    <td>
+                        <a class="a-inside edit" href="../empleados/edit/<%=data[i].id%>">Edit</a>
+
+                        <a class="a-inside delete" href="../empleados/delete/<%=data[i].id%>">Delete</a>
+                        <a class="a-inside detalle" href="../empleados/detalle/<%=data[i].id%>">Detalle</a>
+
+                    </td>
+                </tr>
+            <% }
+
+             }else{ %>
+                 <tr>
+                    <td colspan="3">NO existen empleados</td>
+                 </tr>
+            <% } %>
+               </tbody>
+
+
+            </table>
+
+
+
+    <script>
+      $(document).ready(function(e)
+      {
+
+
+                $('#tabla').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf', 'print'
+        ]
+    } );
+
+      });
+    </script>
+    <script type="text/javascript">
+      function calculo()
+      {
+        var nombre="",
+        apellido="",
+        salario=765.43,
+        años=9;
+
+      }
+    </script>
+
+         </div>
+        </div>
+
+<%- include layouts/footer.ejs %>

@@ -1,0 +1,184 @@
+<%- include layouts/header.ejs %>
+
+
+
+<body>
+
+<div class="container">
+  <h2>Informe de planilla</h2>
+
+  <table id="planilla" class="table table-condensed">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>APELLIDO</th>
+        <th>CEDULA</th>
+        <th>CLAVE</th>
+        <th>CARGO</th>
+        <th>SAL_BASE</th>
+        <th>COM 2%</th>
+        <th>BONOS</th>
+        <th>TOT SAL</th>
+        <th>SEG_SOC</th>
+        <th>SEG_ED</th>
+        <th>ISL</th>
+        <th>OTR_DESC</th>
+        <th>TOT_DESC</th>
+        <th>SAL_NETO</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <%var sueldos=0 %>
+
+      <% if(data.length){
+
+       for(var i = 0;i < data.length;i++) { %>
+
+        <%var salbase=data[i].salario/2 %>
+
+        <%var ventas=data[i].ventas*0.02 %>
+        <%var bono=data[i].salario*0.10 %>
+        <%var saltot=salbase+ventas+bono %>
+        <% sueldos=sueldos+saltot %>
+        <%var segsoc=saltot*0.0975 %>
+        <%var segedu=saltot*0.0125 %>
+        <%var salanual=saltot*26 %>
+        <%var descbas=0 %>
+        <% if(data[i].clave=="A"){
+
+               descbas=800.00
+
+
+        } %>
+        <%var basedeimp=(salanual-descbas)-11000 %>
+        <%var isl=(basedeimp*0.15)/24 %>
+        <%var otrosdesc=data[i].otros_descuentos/2 %>
+        <%var totdesc=segsoc+segedu+isl+otrosdesc %>
+        <%var salnet=saltot-totdesc %>
+
+
+
+
+
+      <tr>
+        <td><%=data[i].id%></td>
+        <td><%=data[i].nombre%></td>
+        <td><%=data[i].apellido%></td>
+        <td><%=data[i].cedula%></td>
+        <td><%=data[i].clave%></td>
+         <td><%=data[i].cargo%></td>
+         <td><%=Math.round(salbase*100)/100%></td>
+         <td><%=Math.round(ventas*100)/100%></td>
+         <td><%=Math.round(bono*100)/100%></td>
+         <td><%=Math.round(saltot*100)/100%></td>
+         <td><%=Math.round(segsoc*100)/100%></td>
+         <td><%=Math.round(segedu*100)/100%></td>
+         <td><%=Math.round(isl*100)/100%></td>
+         <td><%=Math.round(otrosdesc*100)/100%></td>
+         <td><%=Math.round(totdesc*100)/100%></td>
+         <td><%=Math.round(salnet*100)/100%></td>
+
+         <% }
+
+          }else{ %>
+            <tr>
+               <td colspan="3">NO existen empleados</td>
+            </tr>
+         <% } %>
+
+    </tbody>
+  </table>
+
+  <script>
+    $(document).ready(function(e)
+    {
+
+
+              $('#planilla').DataTable({
+             dom: 'Bfrtip',
+             buttons: [
+          'copy', 'excel', 'pdf', 'print'
+      ]
+  } );
+
+    });
+
+  </script>
+</div>
+<div class="container">
+  <h2>Pago patronal</h2>
+
+  <table id ="gobierno" class="table">
+    <thead>
+      <tr>
+        <th>seguro social</th>
+        <th>seguro educativo</th>
+        <th>riesgo profesional</th>
+        <th>total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+   <% var ss=sueldos*0.1225%>
+   <% var se=sueldos*0.015%>
+   <% var rp=sueldos*0.0056%>
+   <%var tot=ss+se+rp%>
+
+
+          <td><%=Math.round(ss*100)/100%></td>
+          <td><%=Math.round(se*100)/100%></td>
+          <td><%=Math.round(rp*100)/100%></td>
+          <td><%=Math.round(tot*100)/100%></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <script>
+    $(document).ready(function(e)
+    {
+
+
+              $('#gobierno').DataTable({
+             dom: 'Bfrtip',
+             buttons: [
+          'copy', 'excel', 'pdf', 'print'
+      ]
+  } );
+
+    });
+
+  </script>
+
+</div>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include layouts/footer.ejs %>

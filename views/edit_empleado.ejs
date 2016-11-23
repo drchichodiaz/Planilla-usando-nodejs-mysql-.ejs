@@ -1,0 +1,64 @@
+<%- include layouts/header.ejs %>
+
+
+  <div class="container">
+    <br>
+    <div class="col-md-5">
+      <form action="/empleados/edit/<%=data[0].id%>" method="post">
+        <div class="panel panel-primary" id="p">
+          <label for="usuario ">Ingrese Usuario</label>
+          <div class="form-group">
+            <label for="nombre" class="control-label">Nombre:</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" value="<%=data[0].nombre%>" >
+          </div>
+          <div class="form-group">
+            <label for="apellido" class="control-label">Apellido:</label>
+            <input type="text" name="apellido" class="form-control" id="apellido" value="<%=data[0].apellido%>" >
+          </div>
+          <div class="form-group">
+            <label for="cedula" class="control-label">Cedula:</label>
+            <input type="text" name="cedula" class="form-control" id="cedula" value="<%=data[0].cedula%>">
+          </div>
+
+      <div class="form-group">
+              <label for="sel1">Estado Civil:</label>
+              <select class="form-control" id="sel1" name="clave">
+                <option <%= data[0].clave == "A" ? "selected" : "" %> value="A">Soltero(A)</option>
+                <option <%= data[0].clave == "E" ? "selected" : "" %> value="E">Casado(E)</option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label for="cargo" class="control-label">Cargo:</label>
+              <input type="text" name="cargo" class="form-control" id="cargo" value="<%=data[0].cargo%>" >
+            </div>
+            <div class="form-group">
+              <label for="fechaInicioLabores" class="control-label">Años:</label>
+              <input type="text" name="años" class="form-control" id="años" value="<%=data[0].años%>" >
+            </div>
+            <div class="form-group">
+              <label for="salario" class="control-label">Salario:</label>
+              <input type="text" name="salario" class="form-control" id="salario" value="<%=data[0].salario%>">
+            </div>
+
+
+            <div class="form-group">
+              <label for="ventas" class="control-label">Ventas:</label>
+              <input type="text" name="ventas" class="form-control" id="ventas" value="<%=data[0].ventas%>">
+            </div>
+            <div class="form-group">
+              <label for="descuentos" class="control-label">Descuentos:</label>
+              <input type="text" name="descuentos" class="form-control" id="descuentos " value="<%=data[0].otros_descuentos%>">
+            </div>
+
+
+             <input type="submit" id="btn-submit" value="Actualizar" class="btn btn-primary btn-block" >
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<%- include layouts/footer.ejs %>
